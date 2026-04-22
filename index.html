@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Image Converter | Pro Android App</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/play_store_icon.png">
+    <link rel="apple-touch-icon" href="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/play_store_icon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --secondary: #8B5CF6;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Декоративная полоса сверху */
+        .top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #6366F1 100%);
+            width: 100%;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 60px 0 40px;
+            background: radial-gradient(circle at top right, #eef2ff, #f8fafc);
+            text-align: center;
+        }
+
+        .app-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--bg-dark);
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: #000;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            background: #111;
+        }
+
+        /* Секция галереи скриншотов */
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 40px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 240px;
+            scroll-snap-align: start;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 4px solid white;
+            transition: transform 0.3s;
+            background: #eee;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Форматы */
+        .formats-strip {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .format-tag {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin: 0 auto 20px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        /* Технический блок */
+        .tech-box {
+            background: var(--bg-dark);
+            color: white;
+            padding: 80px 0;
+            border-radius: 40px;
+            margin-bottom: 0px;
+            overflow: hidden;
+        }
+
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .tech-list li::before {
+            content: "✓";
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .side-logo-link {
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .side-logo-link:hover {
+            transform: scale(2.2);
+            z-index: 10;
+        }
+
+        .side-app-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Секция Download — исправленные отступы по вашей просьбе */
+        .download-footer-section {
+            text-align: center;
+            padding-top: 80px;    /* Отступ сверху */
+            padding-bottom: 40px; /* Уменьшенный отступ снизу */
+        }
+
+        .google-play-badge {
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .google-play-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .google-play-badge img {
+            height: 60px;
+        }
+
+        /* Footer — исправленные отступы по вашей просьбе */
+        footer {
+            padding: 10px 0 20px; /* Компактный отступ */
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .footer-nav {
+            margin-bottom: 20px;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .tech-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .tech-list li { justify-content: center; }
+            .side-app-logo { width: 140px; height: 140px; margin-top: 20px; }
+            .side-logo-link:hover { transform: scale(1.5); }
+            .gallery-container { gap: 10px; }
+            .gallery-item { width: 200px; }
+            .download-footer-section { padding: 40px 0 20px; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar"></div>
+
+    <header>
+        <div class="container">
+            <!-- Иконка приложения -->
+            <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/play_store_icon.png" alt="Universal Image Converter App Icon" class="app-logo">
+            
+            <h1>Universal <span>Image Converter</span></h1>
+            <p class="hero-subtitle">Powerful, secure, and completely offline. Professional image processing that works right on your phone without an internet connection.</p>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.aigrator.universalimageconverter" class="cta-button">
+                Download on Google Play
+            </a>
+
+            <!-- Галерея со всеми скриншотами -->
+            <div class="gallery-container">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/01_main.png" alt="Main Screen" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/02_select.png" alt="Select Images" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/03_edit_ratio.png" alt="Aspect Ratio" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/04_edit_ratate.png" alt="Rotate Image" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/05_edit_scalepng.png" alt="Scaling" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/06_edit_mirror.png" alt="Mirror Effect" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/07_background_color.png" alt="Background Color" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/08_progress.png" alt="Processing" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/09_results.png" alt="Results Screen" class="gallery-item">
+                <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/10_gallery.png" alt="Built-in Gallery" class="gallery-item">
+            </div>
+
+            <div class="formats-strip">
+                <span class="format-tag">PNG</span>
+                <span class="format-tag">JPG</span>
+                <span class="format-tag">WEBP</span>
+                <span class="format-tag">GIF</span>
+                <span class="format-tag">BMP</span>
+                <span class="format-tag">PDF</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="features container">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2>Full Suite of Editing Tools</h2>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <span class="card-icon">📏</span>
+                <h3>Scale & Ratio</h3>
+                <p>Change scale and aspect ratios precisely with built-in presets and manual controls.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔄</span>
+                <h3>Rotate & Mirror</h3>
+                <p>Easily rotate images or apply mirror effects to fix orientation or create new visuals.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎨</span>
+                <h3>Backgrounds</h3>
+                <p>Add custom background colors for transparent images during conversion to JPG or other formats.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">⚡</span>
+                <h3>Batch Speed</h3>
+                <p>Real-time progress tracking even when processing hundreds of images at once.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🖼️</span>
+                <h3>Native Gallery</h3>
+                <p>Browse your converted files directly within the app without switching to other managers.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔒</span>
+                <h3>Safe & Private</h3>
+                <p>Everything is done locally. No clouds, no servers, no privacy risks for your personal photos.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Блок Why Choose с логотипом справа -->
+        <div class="tech-box">
+            <div class="container">
+                <div class="tech-content">
+                    <div>
+                        <h2 style="font-size: 2rem; margin-bottom: 20px;">Why Choose Universal Converter?</h2>
+                        <p style="color: #94a3b8; margin-bottom: 30px;">Reliable, private, and fast tools for Android power users.</p>
+                        <ul class="tech-list">
+                            <li>Works without Internet Connection</li>
+                            <li>No Hidden Data Harvesting</li>
+                            <li>Save Watermark Templates for Future Use</li>
+                            <li>Intuitive, User-Friendly Design</li>
+                            <li>Native Android Performance</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="https://play.google.com/store/apps/details?id=com.aigrator.universalimageconverter" class="side-logo-link">
+                            <img src="https://aigrator.github.io/Universal-Image-Converter-Privacy-Policy/screenshot/play_store_icon.png" alt="App Icon" class="side-app-logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция Get Started Now -->
+        <div class="download-footer-section">
+            <h2 style="margin-bottom: 20px;">Get Started Now</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Join thousands of users who trust our converter for their daily tasks.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.aigrator.universalimageconverter" class="google-play-badge">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <nav class="footer-nav">
+                <a href="https://play.google.com/store/apps/details?id=com.aigrator.universalimageconverter">Support</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </nav>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 Aigrator. Professional tools for Android users.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
