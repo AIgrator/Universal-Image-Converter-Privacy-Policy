@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Image Converter - Feature Graphic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        .feature-graphic {
+            width: 1024px;
+            height: 500px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* Фиолетовая декоративная полоса сверху */
+        .top-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #6366F1 100%);
+        }
+        
+        .content {
+            display: flex;
+            align-items: center;
+            padding: 60px 80px;
+            gap: 60px;
+        }
+        
+        /* Логотип слева */
+        .logo-container {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+        
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            border-radius: 32px;
+            z-index: -1;
+        }
+        
+        .logo-svg {
+            width: 140px;
+            height: 140px;
+        }
+        
+        /* Текст справа */
+        .text-content {
+            flex: 1;
+        }
+        
+        .main-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .main-title .highlight {
+            color: #6366F1;
+        }
+        
+        .subtitle {
+            font-size: 26px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        
+        .features {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-size: 18px;
+            font-weight: 500;
+            color: #334155;
+        }
+        
+        .feature-item .icon {
+            width: 24px;
+            height: 24px;
+            background: #6366F1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        /* Декоративные элементы */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: -100px;
+        }
+        
+        /* Нижняя полоса */
+        .bottom-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #6366F1 100%);
+        }
+        
+        /* Форматы файлов */
+        .formats {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        .format-badge {
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="feature-graphic">
+        <!-- Декоративные элементы -->
+        <div class="top-accent"></div>
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        
+        <div class="content">
+            <!-- Логотип -->
+            <div class="logo-container">
+                <img src="play_store_icon.png" alt="Logo" style="width: 140px; height: 140px; object-fit: contain;">
+            </div>
+
+            <!-- Текст -->
+            <div class="text-content">
+                <h1 class="main-title">
+                    Universal<br>
+                    <span class="highlight">Image Converter</span>
+                </h1>
+
+                <p class="subtitle">
+                    Convert, Resize & Watermark Images
+                </p>
+
+                <div class="features">
+                    <div class="feature-item">
+                        <span class="icon">🖼️</span>
+                        Convert
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">📏</span>
+                        Resize
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">💧</span>
+                        Watermark
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">⚡</span>
+                        Batch
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">🔒</span>
+                        Offline
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Форматы -->
+        <div class="formats">
+            <span class="format-badge">JPG</span>
+            <span class="format-badge">PNG</span>
+            <span class="format-badge">WEBP</span>
+            <span class="format-badge">GIF</span>
+            <span class="format-badge">BMP</span>
+            <span class="format-badge">PDF</span>
+        </div>
+        
+        <div class="bottom-accent"></div>
+    </div>
+    
+    <script>
+        // Instructions for user
+        console.log('%c Universal Image Converter - Feature Graphic ', 
+            'background: #6366F1; color: white; font-size: 20px; padding: 20px;');
+        console.log('%c Size: 1024x500 pixels ', 
+            'background: #333; color: #fff; font-size: 14px; padding: 10px;');
+        console.log('\nTake a screenshot (Win + Shift + S) and save as PNG');
+    </script>
+</body>
+</html>
